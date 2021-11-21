@@ -4,7 +4,8 @@ import string
 
 sz = 1024 * 1024 * 200 #200 megabytes
 char_chunk_sz = int(sz/len(string.ascii_uppercase))
-FILENAME = './public/garbage.html'
+FILENAME_GARBAGE = './public/garbage.blob'
+FILENAME_TESTPATH = './public/testpath.blob'
 
 if __name__ == "__main__":
     garbage = ""
@@ -12,10 +13,9 @@ if __name__ == "__main__":
         garbage += ch * char_chunk_sz
     garbage += '\n'
 
-    with open(FILENAME, 'w') as f:
-        f.write("<html><head><title>Garbage</title></head>\n")
-        f.write("<body>\n")
-        f.write("<p>{}</p>\n".format(garbage))
-        f.write("</body></html>\n")
-        f.write("\n")
+    with open(FILENAME_GARBAGE, 'w') as f:
+        f.write("{}\n".format(garbage))
+
+    with open(FILENAME_TESTPATH, 'w') as f:
+        f.write("Hello World!\n")
 
